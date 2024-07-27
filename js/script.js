@@ -1,6 +1,18 @@
 window.onload = function () {
   // Get the context of the canvas element we want to select
   var ctx = document.getElementById("myChart").getContext("2d");
+
+  document
+    .getElementById("download-chart")
+    .addEventListener("click", function () {
+      var canvas = document.getElementById("myChart");
+      var image = canvas.toDataURL("image/png");
+
+      var link = document.createElement("a");
+      link.href = image;
+      link.download = "chart.png";
+      link.click();
+    });
   // Create a new Chart object
   var myChart = new Chart(ctx, {
     type: "bar",
